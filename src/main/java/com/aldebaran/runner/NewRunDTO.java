@@ -1,30 +1,23 @@
 package com.aldebaran.runner;
 
+import java.util.UUID;
+
 public class NewRunDTO {
-    private String address, login, password, task, media;
-    private Long runId;
+    private UUID runId, environmentId;
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setTask(String task) {
-        this.task = task;
-    }
-
-    public void setMedia(String media) {
-        this.media = media;
-    }
-
-    public void setRunId(Long runId) {
+ public void setRunId(UUID runId) {
         this.runId = runId;
+    }
+
+    public void setEnvironmentId(UUID environmentId) {
+        this.environmentId = environmentId;
+    }
+
+    public UUID getRunId() {
+        return runId;
+    }
+
+    public UUID getEnvironmentId() {
+        return environmentId;
     }
 }

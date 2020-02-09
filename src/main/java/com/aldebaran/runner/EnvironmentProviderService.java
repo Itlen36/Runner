@@ -8,6 +8,7 @@ import org.jose4j.json.internal.json_simple.JSONObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.awt.*;
+import java.util.UUID;
 
 @Path("/env-provider")
 @RegisterRestClient
@@ -16,7 +17,7 @@ public interface EnvironmentProviderService {
     @GET
     @Path("/get-env-id/{envName}")
     @Produces(MediaType.TEXT_PLAIN)
-    Long getEnvID(String envName);
+    UUID getEnvId(@PathParam String envName);
     /*@GET
     @Path("/get-checks/{courseId}/{step}")
     @Produces("application/json")
@@ -25,10 +26,13 @@ public interface EnvironmentProviderService {
     @Path("/get-checks/{courseId}/{step}")
     @Produces("application/json")
     JSONObject getChecks(@PathParam Long courseId, @PathParam int step);*/
+
+
+    /*
     @GET
     @Path("/get-checks/{courseId}/{step}")
     @Produces("application/json")
-    Json getChecks(@PathParam Long courseId, @PathParam int step);
+    Json getChecks(@PathParam Long courseId, @PathParam Long step);
 
     @POST
     @Path("/sendjson")
@@ -49,5 +53,5 @@ public interface EnvironmentProviderService {
     @GET
     @Path("/name/{name}")
     @Produces("application/json")
-    Country getCapital(@PathParam String name);
+    Country getCapital(@PathParam String name);*/
 }

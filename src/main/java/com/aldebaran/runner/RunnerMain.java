@@ -37,18 +37,20 @@ public class RunnerMain {
     @Inject
     JsonWebToken jwt;
 
-    @GET
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/new-run/{courseId}")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Path("/new-run/{courseID}")
     @Transactional
-    public NewRunDTO newRun(@PathParam Long courseId) {
-        Long userId = 1L;
+    public NewRunDTO newRun(String courseID) {
+        UUID courseId = UUID.fromString(courseID);
+        UUID userId = UUID.randomUUID();//jwt.claim("UserName");
         RunData existingRun = RunData.findRun(userId, courseId);
         RunData runData = new RunData();
         if (existingRun==null) {
             runData.setCourseID(courseId);
             runData.setUserID(userId);
-            runData.setEnvironmentID(envProviderService.getEnvID(cmService.getEnvName(courseId)));
+            runData.setEnvironmentID(envProviderService.getEnvId(cmService.getEnvName(courseId)));
         } else {
             runData = existingRun;
         }
@@ -58,16 +60,30 @@ public class RunnerMain {
         return newRunDTO;
     }
 
-    @GET
-    @Path("/check/{runId}")
-    public Response check(@PathParam UUID runId) {
-        RunData runData = RunData.findById(runId);
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Path("/check")
+    public Response check(String runId) {
+        RunData runData = RunData.findById(UUID.fromString(runId));
         if (runData == null)
-            return Response.status(404).build();
+            return Response.status(Response.Status.NOT_FOUND).build();
         ChecksDTO checksDTO = new ChecksDTO();
         checksDTO.setChecks(cmService.getChecks(runData.getCourseID(), runData.getStep()));
         checkerService.check(checksDTO);
         return Response.ok().build();
+    }
+
+
+
+
+
+
+
+    /*@GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/exampleUUID")
+    public String getUUID() {
+        return UUID.randomUUID().toString();
     }
 
     @GET
@@ -81,7 +97,7 @@ public class RunnerMain {
         //Json json = new Json(rd);
         //return cmService.sendJSON(jsonObject);
         return jsonObject;
-    }
+    }*/
 
     /*@GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -90,7 +106,7 @@ public class RunnerMain {
         return jsonO;
     }*/
 
-    private Set<RunData> runDataSet = Collections.newSetFromMap(Collections.synchronizedMap(new LinkedHashMap<>()));
+   /* private Set<RunData> runDataSet = Collections.newSetFromMap(Collections.synchronizedMap(new LinkedHashMap<>()));
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -117,14 +133,15 @@ public class RunnerMain {
         System.out.println("hello -------------");
         return "Hello lol kek";
     }
-
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
+*/
+ /*   @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/jwt")
-    public String getJWT() {
-        return jwt.toString();
-    }
-
+    @PermitAll
+    public JsonWebToken getJWT() {
+        return jwt;
+    }*/
+/*
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/delete/{id}")
@@ -134,7 +151,7 @@ public class RunnerMain {
         RunData.delete("runID", id);
         return "OK!";
     }
-
+*/
     /*@GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("get-checks/{courseId}/{step}")
@@ -142,16 +159,16 @@ public class RunnerMain {
         Set<RunData> runData = cmService.getChecks(courseId, step);
         return runData;
     }*/
-    @GET
+  /*  @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("get-checks/{courseId}/{step}")
-    public Json getChecks(@PathParam Long courseId, @PathParam int step) {
+    public Json getChecks(@PathParam Long courseId, @PathParam Long step) {
         //JSONObject runData = cmService.getChecks(courseId, step);
         Json runData = cmService.getChecks(courseId, step);
         return runData;
-    }
+    }*/
 
-    @GET
+    /*@GET
     @Path("/name/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Country name(@PathParam String name) {
@@ -167,6 +184,18 @@ public class RunnerMain {
         Set<RunData> rdS = new HashSet<>();
         rdS.add(rd);
         return rd;
+    }*/
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/AddRun")
+    @Transactional
+    public RunData addRun() {
+        RunData rd = new RunData();
+        rd.setCourseID(UUID.randomUUID());
+        rd.setEnvironmentID(UUID.randomUUID());
+        rd.setUserID(UUID.randomUUID());
+        rd.persist();
+        return  rd;
     }
 
     @GET
@@ -178,8 +207,36 @@ public class RunnerMain {
         if (AllRuns.isEmpty())
             str.append("Empty");
         for (RunData run : AllRuns) {
-            str.append("RunID: ").append(run.getRunID()).append(" UserID: ").append(run.getUserID()).append(" CourseID: ").append(run.getCourseID()).append(" EnvID: ").append(run.getEnvironmentID()).append("\n");
+            str.append("RunID: ").append(run.getRunID())
+                    .append(" UserID: ").append(run.getUserID())
+                    .append(" CourseID: ").append(run.getCourseID())
+                    .append(" EnvID: ").append(run.getEnvironmentID())
+                    .append(" Step ").append(run.getStep())
+                    .append(" Time ").append(run.getStartTime()).append("\n");
         }
         return str.toString();
+    }
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/getAll")
+    public RunData getAll2() {
+        Set<RunData> runDataSet = new HashSet<>();
+        List<RunData> runDataList = RunData.listAll();
+        /*for (RunData rd :  runDataList)
+            runDataSet.add(rd);*/
+        runDataSet.add(runDataList.get(0));
+        return runDataList.get(0);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/getFirst")
+    public NewRunDTO getFirst() {
+        List<RunData> runDataList = RunData.listAll();
+        NewRunDTO newRunDTO = new NewRunDTO();
+        newRunDTO.setEnvironmentId(runDataList.get(0).getEnvironmentID());
+        newRunDTO.setRunId(runDataList.get(0).getRunID());
+        return newRunDTO;
     }
 }

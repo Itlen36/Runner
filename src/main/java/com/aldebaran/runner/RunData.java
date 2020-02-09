@@ -14,12 +14,12 @@ import java.util.UUID;
 
 @Entity
 public class RunData extends PanacheEntity {
-    public UUID runID;
-    public Long userID, courseID, environmentID, step;
+    public UUID runID, userID, courseID, environmentID;
+    public Long  step;
     public String status;
     public Time startTime;
 
-    public RunData(Long userId, Long courseId, Long environmentId) {
+    public RunData(UUID userId, UUID courseId, UUID environmentId) {
         userID = userId;
         courseID = courseId;
         environmentID = environmentId;
@@ -32,29 +32,29 @@ public class RunData extends PanacheEntity {
         startTime = Time.valueOf(LocalTime.now());
     }
 
-    public static RunData findRun(Long userId, Long courseId) {
-        return find("userid = ?1 and courseid = ?2", userId, courseId).firstResult();
+    public static RunData findRun(UUID userId, UUID courseId) {
+        return find("userId = ?1 and courseId = ?2", userId, courseId).firstResult();
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public UUID getRunID() {
         return runID;
     }
 
     public void nextStep() {
-        step++;
+        this.step++;
     }
 
-    public Long getUserID() {
+    public UUID getUserID() {
         return userID;
     }
 
-    public Long getCourseID() {
+    public UUID getCourseID() {
         return courseID;
     }
 
-    public Long getEnvironmentID() {
+    public UUID getEnvironmentID() {
         return environmentID;
     }
 
@@ -64,15 +64,19 @@ public class RunData extends PanacheEntity {
         return status;
     }
 
-    public void setUserID(Long userID) {
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public void setUserID(UUID userID) {
         this.userID = userID;
     }
 
-    public void setCourseID(Long courseID) {
+    public void setCourseID(UUID courseID) {
         this.courseID = courseID;
     }
 
-    public void setEnvironmentID(Long environmentID) {
+    public void setEnvironmentID(UUID environmentID) {
         this.environmentID = environmentID;
     }
 

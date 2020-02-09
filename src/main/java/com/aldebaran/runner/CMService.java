@@ -8,6 +8,7 @@ import org.jose4j.json.internal.json_simple.JSONObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Set;
+import java.util.UUID;
 
 @Path("/cm")
 @RegisterRestClient
@@ -15,12 +16,12 @@ public interface CMService {
     @GET
     @Path("courses/{courseId}/get-env-name/")
     @Produces(MediaType.TEXT_PLAIN)
-    String getEnvName(@PathParam Long courseId);
+    String getEnvName(@PathParam UUID courseId);
 
     @GET
     @Path("courses/{courseId}/steps/{step}/checks")
     @Produces(MediaType.TEXT_PLAIN)
-    byte[] getChecks(@PathParam Long courseId, @PathParam Long step);
+    byte[] getChecks(@PathParam UUID courseId, @PathParam Long step);
 
 
 
@@ -35,12 +36,12 @@ public interface CMService {
     @Path("/get-checks/{courseId}/{step}")
     @Produces("application/json")
     JSONObject getChecks(@PathParam Long courseId, @PathParam int step);*/
-    @GET
+    /*@GET
     @Path("/get-checks/{courseId}/{step}")
     @Produces("application/json")
-    Json getChecks(@PathParam Long courseId, @PathParam int step);
+    Json getChecks(@PathParam Long courseId, @PathParam Long step);*/
 
-    @POST
+  /*  @POST
     @Path("/sendjson")
     @Produces("application/json")
     @Consumes("application/json")
@@ -54,10 +55,6 @@ public interface CMService {
     @GET
     @Path("/tx-json/{jsonO}")
     @Produces("application/json")
-    JSONObject sendJSON(@PathParam JSONObject jsonO);
+    JSONObject sendJSON(@PathParam JSONObject jsonO);*/
 
-    @GET
-    @Path("/name/{name}")
-    @Produces("application/json")
-    Country getCapital(@PathParam String name);
 }
