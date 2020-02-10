@@ -17,6 +17,7 @@ public class RunData extends PanacheEntity {
     public UUID runID, userID, courseID, environmentID;
     public Long  step;
     public String status;
+    public boolean checked, passed;
     public Time startTime;
 
     public RunData(UUID userId, UUID courseId, UUID environmentId) {
@@ -44,6 +45,9 @@ public class RunData extends PanacheEntity {
 
     public void nextStep() {
         this.step++;
+        this.passed = false;
+        this.checked = false;
+        this.status = "";
     }
 
     public UUID getUserID() {
@@ -68,6 +72,14 @@ public class RunData extends PanacheEntity {
         return startTime;
     }
 
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public boolean isPassed() {
+        return passed;
+    }
+
     public void setUserID(UUID userID) {
         this.userID = userID;
     }
@@ -82,5 +94,13 @@ public class RunData extends PanacheEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    public void setPassed(boolean passed) {
+        this.passed = passed;
     }
 }

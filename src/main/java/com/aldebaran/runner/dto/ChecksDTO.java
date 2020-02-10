@@ -1,8 +1,10 @@
-package com.aldebaran.runner;
+package com.aldebaran.runner.dto;
+
+import java.util.UUID;
 
 public class ChecksDTO {
     private byte[] checks;
-    private Long environmentId;
+    private UUID environmentId;
     public ChecksDTO () {
 
     }
@@ -11,7 +13,7 @@ public class ChecksDTO {
         this.checks = checks;
     }
 
-    public void setEnvironmentId(Long environmentId) {
+    public void setEnvironmentId(UUID environmentId) {
         this.environmentId = environmentId;
     }
 }

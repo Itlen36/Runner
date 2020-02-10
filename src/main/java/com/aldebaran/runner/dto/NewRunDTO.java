@@ -1,4 +1,4 @@
-package com.aldebaran.runner;
+package com.aldebaran.runner.dto;
 
 import java.util.UUID;
 
