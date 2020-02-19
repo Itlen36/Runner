@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="626b8956-0c5e-4ebb-83e1-3d740872f8e7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/ChecksResend.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/model/CheckerReply.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/model/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/RunData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/model/RunData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/RunnerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/RunnerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/dto/ChecksDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/dto/ChecksDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/dto/ReturnCheckStatusDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/dto/ReturnCheckStatusDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/services/CMService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/services/CMService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/services/CheckerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/services/CheckerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/services/EnvironmentProviderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aldebaran/runner/services/EnvironmentProviderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Kotlin Interface" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1XOIKmnx5OQSpDhCvVMe1gKViOx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TaskManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.aldebaran.runner" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.aldebaran.runner" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\korot\java_projects\sources\Runner\src\main\resources\META-INF\resources" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="626b8956-0c5e-4ebb-83e1-3d740872f8e7" name="Default Changelist" comment="" />
+      <created>1580910652458</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580910652458</updated>
+    </task>
+    <task id="LOCAL-00001" summary="msg">
+      <created>1581201800106</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581201800106</updated>
+    </task>
+    <task id="LOCAL-00002" summary="msg1">
+      <created>1581201926965</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1581201926965</updated>
+    </task>
+    <task id="LOCAL-00003" summary="uuid">
+      <created>1581280788909</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1581280788910</updated>
+    </task>
+    <task id="LOCAL-00004" summary="packeges">
+      <created>1581369615944</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1581369615944</updated>
+    </task>
+    <task id="LOCAL-00005" summary="v13">
+      <created>1581370550324</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1581370550324</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/CoursesRunner" />
+    </ignored-roots>
+    <MESSAGE value="msg" />
+    <MESSAGE value="msg1" />
+    <MESSAGE value="uuid" />
+    <MESSAGE value="packeges" />
+    <MESSAGE value="v13" />
+    <option name="LAST_COMMIT_MESSAGE" value="v13" />
+  </component>
+</project>

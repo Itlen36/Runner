@@ -1,0 +1,8 @@
+com\aldebaran\runner\ChecksResend.class
+com\aldebaran\runner\dto\NewRunDTO.class
+com\aldebaran\runner\services\EnvironmentProviderService.class
+com\aldebaran\runner\dto\ChecksDTO.class
+com\aldebaran\runner\dto\ReturnCheckStatusDTO.class
+com\aldebaran\runner\RunnerMain.class
+com\aldebaran\runner\services\CMService.class
+com\aldebaran\runner\services\CheckerService.class
