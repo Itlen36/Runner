@@ -44,19 +44,6 @@ public class RunData extends PanacheEntity {
         startDate = Date.valueOf(LocalDate.now());
     }
 
-    public RunData(boolean val) {
-        step = 1L;
-        startTime = Time.valueOf(LocalTime.now());
-        startDate = Date.valueOf(LocalDate.now());
-        checked = false;
-        passed = false;
-        status = "";
-        checking = val;
-        userID = UUID.randomUUID();
-        courseID = UUID.randomUUID();
-        environmentID = UUID.randomUUID();
-    }
-
     public static RunData findRun(UUID userId, UUID courseId) {
         return find("userId = ?1 and courseId = ?2", userId, courseId).firstResult();
     }

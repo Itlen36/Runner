@@ -21,8 +21,11 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.POST;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
+import java.security.Principal;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.*;
@@ -51,7 +54,7 @@ public class RunnerMain {
     @Transactional
     public NewRunDTO newRun(String courseID) {
         UUID courseId = UUID.fromString(courseID);
-        UUID userId = UUID.randomUUID();//jwt.claim("UserName");
+        UUID userId = jwt.getClaim("UserName");
         RunData existingRun = RunData.findRun(userId, courseId);
         RunData runData = new RunData();
         if (existingRun == null) {
@@ -59,7 +62,6 @@ public class RunnerMain {
             runData.setUserID(userId);
             String envName = cmService.getEnvName(courseId.toString());
             runData.setEnvironmentID(UUID.fromString(envProviderService.getEnvId(envName)));
-            //runData.setEnvironmentID(UUID.randomUUID());
             runData.persist();
             Course course = Course.findById(courseId);
             if (course == null) {
@@ -244,23 +246,4 @@ public class RunnerMain {
             return Response.ok().build();
         }
     }
-
-    @GET
-    @Path("/fill-db/{countAll}/{countSend}")
-    @Produces(MediaType.TEXT_PLAIN)
-    @Transactional
-    public String fillDB(@PathParam Long countAll, @PathParam Long countSend) {
-        LocalTime timeStart = LocalTime.now();
-        countSend = countSend>countAll?countAll:countSend;
-        for (long i = 0L; i<countSend; i++) {
-            RunData runData = new RunData(true);
-            runData.persist();
-        }
-        for (long i = 0L; i<countAll-countSend; i++) {
-            RunData runData = new RunData(false);
-            runData.persist();
-        }
-        return "OK! "+ Duration.between(timeStart, LocalTime.now()).getNano();
-    }
-
 }
